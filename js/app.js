@@ -15,8 +15,11 @@ function searchYouTube(queryValue) {
   $.getJSON(url, options, function(data){
     data.items.forEach(function(item){
       var thumbnailUrl = item.snippet.thumbnails.default.url;
-      var html = '<li><image src="'+ thumbnailUrl +'"></li>';
+      var videoUrl = 'https://www.youtube.com/watch?v=' + item.id.videoId;
+      var html = '<li><a href="'+ videoUrl +'"><image src="'+ thumbnailUrl +'"></a></li>';
       $('#displayResults').append(html);
     });
   });  
 }
+
+
